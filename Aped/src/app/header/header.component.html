@@ -1,4 +1,4 @@
-<header class="flex flex-row justify-between items-center bg-cyan-900 text-white lg:px-10 px-5 fixed lg:w-screen w-full z-50 font-medium shadow">
+<header class="flex lg:flex-row flex-row-reverse justify-between items-center bg-cyan-900 text-white lg:px-10 px-5 fixed lg:w-screen w-full z-50 font-medium shadow">
     <div><img class=" h-14 w-14 p-1 rounded-full" src="assets/images/logo.jpg" alt=""></div>
     <nav>
         <ul class="hidden md:flex flex-row gap-10">
@@ -7,7 +7,9 @@
             <li routerLink="pageEvent" routerLinkActive="font-bold underline" class="hover:bg-white hover:text-black p-2 rounded-lg cursor-pointer">Evénement</li>
             <a class="hover:bg-red-700 hover:text-white p-2 w-20 h-10 rounded-lg bg-white border border-white text-blue-500 text-center cursor-pointer" href="#">Don</a>
         </ul>
-        <div><img class=' block md:hidden h-6 w-6' src="assets/images/Menu.png" alt="menu" /></div>
+        <div><img (click)="modal.showModal()" class=' block md:hidden h-6 w-6' src="assets/images/Menu.png" alt="menu" /></div>
+        <app-modal-menu #modal/>
     </nav>
+    
 
 </header>

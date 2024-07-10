@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
+import { NavigateToDirective } from '../navigate-to.directive';
 
 @Component({
   selector: 'app-about',
   standalone: true,
-  imports: [],
+  imports: [NavigateToDirective],
   templateUrl: './about.component.html',
   styleUrl: './about.component.css'
 })
