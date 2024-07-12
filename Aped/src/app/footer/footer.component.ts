@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
+import { NavigateToDirective } from '../navigate-to.directive';
 
 @Component({
   selector: 'app-footer',
   standalone: true,
-  imports: [],
+  imports: [NavigateToDirective],
   templateUrl: './footer.component.html',
   styleUrl: './footer.component.css'
 })
