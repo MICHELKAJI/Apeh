@@ -1,16 +1,15 @@
 import { Component } from '@angular/core';
-import { HeaderComponent } from './header/header.component';
 import { RouterOutlet } from '@angular/router';
-
-
+import { LandingPageComponent } from './landing-page/landing-page.component';
+import { HeaderComponent } from './header/header.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [HeaderComponent, RouterOutlet ],
+  imports: [RouterOutlet, LandingPageComponent, HeaderComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'Aped';
+  title = 'aphe';
 }

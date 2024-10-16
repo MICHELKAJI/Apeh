@@ -1,9 +1,0 @@
-<div class="flex flex-col gap-8 rounded-lg pt-16 opacity-10" *ngIf="slides.length">
-    <div class="overflow-hidden">
-      <div class="whitespace-nowrap transition-transform duration-500" [style.transform]="'translateX(-' + currentSlideIndex * 100 + '%)'">
-        <div *ngFor="let slide of slides" class="inline-block w-full h-80">
-          <img [src]="slide.src" [alt]="slide.alt" class="w-full h-full object-cover rounded-lg"/>
-        </div>
-      </div>
-    </div>
-  </div>

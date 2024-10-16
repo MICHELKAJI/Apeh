@@ -1,18 +1,31 @@
-<header class="flex lg:flex-row justify-between bg-opacity-10 items-center bg-cyan-900 text-white lg:px-10 px-5 fixed lg:w-screen w-full z-50 font-medium shadow">
-    <div class="flex flex-row items-center">
-        <img class=" h-14 w-14 p-1 rounded-full" src="assets/images/logo.jpg" alt="">
-        <h1 class="text-white">APEH</h1>
+<header class=" flex flex-row top-5 w-[60rem] gap-5 fixed inset-0 mx-auto font-bold h-[6rem] z-50 items-center  bg-white">
+    <div class="">
+        <img class="h-10 w-20" src="images/logoOne.png" alt="">
     </div>
-    <nav>
-        <ul class="hidden md:flex flex-row gap-10">
-            <li routerLink="" routerLinkActive="font-bold underline" [routerLinkActiveOptions]="{ exact: true }" class="hover:bg-white hover:text-black p-2 rounded-lg cursor-pointer">Accueil</li>
-            <li routerLink="pageAbout" routerLinkActive="font-bold underline" class="hover:bg-white hover:text-black p-2 rounded-lg cursor-pointer">APropos</li>
-            <li routerLink="pageEvent" routerLinkActive="font-bold underline" class="hover:bg-white hover:text-black p-2 rounded-lg cursor-pointer">Evénement</li>
-            <a class="hover:bg-red-700 hover:text-white p-2 w-20 h-10 rounded-lg bg-white border border-white text-blue-500 text-center cursor-pointer" href="#">Don</a>
-        </ul>
-        <div><img (click)="modal.showModal()" class=' block md:hidden h-6 w-6' src="assets/images/Menu.png" alt="menu" /></div>
-        <app-modal-menu #modal/>
-    </nav>
-    
+    <div class=" flex flex-col">
+        <div class=" bg-slate-200">
+            <div class="flex flex-row gap-5 justify-end w-[55rem] items-center text-[#3336]  font-bold">
+                <div class=" flex flex-row items-center gap-1"><div><img class="h-4 w-4" src="/images/Letter.png" alt=""></div><p class="text-xs">michelkajibwami&#64;gmail.com</p></div>
+                <div  class=" flex flex-row items-center gap-1"><div><img class="h-4 w-4" src="/images/Ringer.png" alt=""></div><p class="text-xs">+243970607351</p></div>
+                <button class="bg-orange-300 p-1 text-white hover:bg-sky-500 transition duration-300">Faire un Don</button>
+            </div>
+        </div>
+        <div class="bg-white flex flex-row">
+            <nav class="flex flex-row bg-slate-100 w-[55rem] justify-between">
+                <ul class=" flex flex-row gap-3 text-[#4a494977]">
+                    <li routerLink ="" routerLinkActive="font-bold bg-white border-t-4 border-t-red-500" [routerLinkActiveOptions]="{ exact: true }" class="hover:bg-white hover:font-bold transition duration-300 w-32 p-5 text-center text-xs cursor-pointer ">Accueil</li>
+                    <li routerLink="about" routerLinkActive="font-bold bg-white border-t-4 border-t-red-500" class="hover:bg-white hover:font-bold transition duration-300 w-32 p-5 text-center text-xs cursor-pointer">A propos</li>
+                    <li routerLink="actuality" routerLinkActive="font-bold bg-white border-t-4 border-t-red-500" class="hover:bg-white hover:font-bold transition duration-300 w-32 p-5 text-center text-xs cursor-pointer">Actualité</li>
+                    <li routerLink="cause" routerLinkActive="font-bold bg-white border-t-4 border-t-red-500" class="hover:bg-white hover:font-bold transition duration-300 w-32 p-5 text-center text-xs cursor-pointer">Causes</li>
+                </ul>
+                <div class=" flex flex-row items-center gap-5 mr-4">
+                    <div><img class=" h-4 w-4" src="images/TwitterX.png" alt=""></div>
+                    <div><img class=" h-4 w-4" src="images/YouTube.png" alt=""></div>
+                    <div><img class=" h-4 w-4" src="images/LinkedIn.png" alt=""></div>
+                    <div><img class=" h-4 w-4" src="images/Facebook.png" alt=""></div>
+                </div>
+            </nav>
+        </div>
+    </div>
 
 </header>

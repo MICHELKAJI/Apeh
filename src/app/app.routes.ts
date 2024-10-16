@@ -1,10 +1,12 @@
 import { Routes } from '@angular/router';
-import { PageAboutComponent } from './page-about/page-about.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
-import { PageEventComponent } from './page-event/page-event.component';
+import { LangingAboutComponent } from './langing-about/langing-about.component';
+import { LangingActualityComponent } from './langing-actuality/langing-actuality.component';
+import { LangingEventComponent } from './langing-event/langing-event.component';
 
 export const routes: Routes = [
-    {path: 'pageAbout', component: PageAboutComponent},
-    {path: '', component: LandingPageComponent},
-    {path: 'pageEvent', component: PageEventComponent }
+    {path: '', component: LandingPageComponent },
+    {path:'about', component: LangingAboutComponent},
+    {path:'actuality', component: LangingActualityComponent},
+    {path: 'cause', component: LangingEventComponent}
 ];
