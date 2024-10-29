@@ -9,10 +9,14 @@
         <h3 class="text-xl font-bold">Explorer Nos Causes</h3>
         <button class="bg-slate-950 shadow-lg text-white p-2 w-40 rounded-lg hover:text-black hover:bg-white hover:font-bold transition duration-300">Savoir Plus</button>
     </div>
-    <div class="bg-orange-400 h-[30rem] w-80 mt-[-10rem] text-white flex flex-col items-center p-10 gap-9">
+    <form  (ngSubmit)="submitEmail()" class="bg-orange-400 h-[30rem] w-80 mt-[-10rem] text-white flex flex-col items-center p-10 gap-9">
         <div><img class="h-32 w-32 rounded-full" src="images/mail.png" alt=""></div>
         <h2 class="text-xs">News Letter</h2>
         <h3 class="text-xl font-bold">Rester Informer</h3>
-        <div class="flex flex-row items-center h-10 border border-white rounded-full"><div><input class="h-8 bg-transparent border-none focus:outline-none  p-2" type="text"></div><button class="bg-slate-950 shadow-xl text-white p-2 rounded-full"><img class="h-6 w-6" src="images/Envelope.png" alt=""></button></div>
-    </div>
+        <div class="flex flex-row items-center h-10 border border-white rounded-full"><div><input class="h-8 bg-transparent border-none focus:outline-none  p-2" type="email" id="email" [(ngModel)]="mail" name="email" required></div><button type="submit" class="bg-slate-950 shadow-xl text-white p-2 rounded-full hover:bg-blue-600 transition duration-300"><img class="h-6 w-6" src="images/Envelope.png" alt=""></button></div>
+        <p [ngClass]="{
+            'text-green-600 bg-green-100 p-2 mt-4 rounded': messageType === 'succès',
+            'text-red-600 bg-red-100 p-2 mt-4 rounded': messageType === 'error'
+          }">{{ message }}</p>
+    </form>
 </main>
