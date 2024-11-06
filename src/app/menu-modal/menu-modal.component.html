@@ -1,0 +1,14 @@
+<div>
+    <div class="fixed inset-0  flex  justify-start h-full w-full bg-black bg-opacity-25" [ngClass]="{'hidden': !isVisible}">
+        <div  class= "bg-white w-60">
+        <span (click)="closeModal()" class=" p-4 text-xl text-black">&times;</span>
+        <ul class="text-black p-10 flex flex-col gap-5 mt-20">
+            <li appNavigationMenu="" (click)="closeModal()">Accueil</li>
+            <li appNavigationMenu="/about" (click)="closeModal()">A propos</li>
+            <li appNavigationMenu="/actuality" (click)="closeModal()">Actualités</li>
+            <li appNavigationMenu="/cause" (click)="closeModal()">Causes</li>
+            <li appNavigationMenu="">Don</li>
+        </ul>
+    </div>
+    </div>
+</div>
