@@ -1,8 +1,8 @@
 <div>
-<main class="bg-slate-950 h-screen flex flex-col gap-5">
-  <div class="flex lg:flex-row flex-col lg:pt-40 lg:pl-[16.5rem] gap-2">
-    <div class="h-[15rem] w-[30rem] bg-slate-500"><app-carousel/></div>
-    <div class="flex flex-col gap-4">
+<main class="bg-slate-950 h-auto flex flex-col gap-10">
+  <div class="flex lg:flex-row flex-col lg:pt-64 lg:pl-[16.5rem] gap-3">
+    <div class="lg:h-[15rem] lg:w-[30rem] bg-slate-500"><app-carousel/></div>
+    <div class="flex flex-col gap-4 px-5">
       <div class="bg-white">
         <div class="flex flex-row gap-2 px-5 pt-5"><img class="h-6 w-6" src="/images/calender.png" alt=""> <span>13</span> <span>Octobre</span></div>
         <div class="flex felx-col gap-2">
@@ -10,7 +10,7 @@
             <img class="h-24 w-36 shadow-lg rounded-lg" src="/images/backg.jpeg" alt="">
             <div>
               <h2 class="font-bold text-2xl w-[17rem] ">Visite de lorphelinat Maman du monde</h2>
-              <p class="text-blue-600 font-light text-right">Savoir plus...</p>
+              <p class="text-blue-600 font-light lg:text-right">Savoir plus...</p>
             </div>
           </div>
         </div>
@@ -22,14 +22,14 @@
             <img class="h-24 w-36 shadow-xl rounded-lg" src="/images/backg.jpeg" alt="">
             <div>
               <h2 class="font-bold text-2xl w-[17rem]">Visite de lorphelinat Maman du monde</h2>
-              <p class="text-blue-600 font-light text-right">Savoir plus...</p>
+              <p class="text-blue-600 font-light lg:text-right">Savoir plus...</p>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <div class="flex flex-row justify-center gap-5 items-end">
+  <div class="flex lg:flex-row flex-col justify-center gap-5 lg:items-end items-center">
     <div class="bg-white h-36 w-96 rounded-2xl p-3 hover:bg-cyan-400 transition duration-300">
       <div class="flex flex-row gap-2 bg-slate-900 p-2 text-white w-32 rounded-2xl"><img class="h-6 w-6" src="/images/calender.png" alt=""> <span>13</span> <span>Octobre</span></div>
       <h2 class="text-2xl font-light">Visite de la prison centrale de Bukavu...</h2>
@@ -42,7 +42,9 @@
     </div>
     <button class="bg-orange-400 h-10 w-24 rounded-lg text-white hover:bg-blue-500 transition duration-300 animate-bounce">Voir plus...</button>
   </div>
+  <div>
+    <app-footer/>
+  </div>
 </main>
-<app-footer/>
 </div>
   
