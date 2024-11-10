@@ -3,11 +3,12 @@ import { Data, ServiceNewslatterService } from '../service-newslatter.service';
 import { NgClass, NgFor } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, RouterLink } from '@angular/router';
+import { NavigationMenuDirective } from '../navigation-menu.directive';
 
 @Component({
   selector: 'app-call-to-action',
   standalone: true,
-  imports: [NgFor, FormsModule, NgClass, RouterLink],  // Retirer BrowserModule et HttpClientModule ici
+  imports: [NgFor, FormsModule, NgClass, RouterLink, NavigationMenuDirective],  // Retirer BrowserModule et HttpClientModule ici
   templateUrl: './call-to-action.component.html',
   styleUrls: ['./call-to-action.component.css']
 })

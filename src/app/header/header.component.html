@@ -1,35 +1,39 @@
 <header class="">
-<div class=" hidden md:block  flex-row top-5 w-[60rem] gap-5 fixed inset-0 mx-auto font-bold h-[6rem] z-50 items-center  bg-white">
-    <div class="">
-        <img class="h-10 w-20" src="images/logoOne.png" alt="">
-    </div>
-    <div class=" flex flex-col">
-        <div class=" bg-slate-200">
-            <div class="flex flex-row gap-5 justify-end w-[55rem] items-center text-[#3336]  font-bold">
-                <div class=" flex flex-row items-center gap-1"><div><img class="h-4 w-4" src="/images/Letter.png" alt=""></div><p class="text-xs">michelkajibwami&#64;gmail.com</p></div>
-                <div  class=" flex flex-row items-center gap-1"><div><img class="h-4 w-4" src="/images/Ringer.png" alt=""></div><p class="text-xs">+243970607351</p></div>
-                <button class="bg-orange-300 p-1 text-white hover:bg-sky-500 transition duration-300">Faire un Don</button>
+<div class=" hidden md:block">
+    <div [ngClass]="isScrolled? 'top-0 bg-red-500' : ' top-5' " class=" flex  flex-row w-[60rem] gap-5 fixed inset-0 mx-auto font-bold h-[6rem] z-50 items-center  bg-white ">
+        <div class="">
+            <img class="h-10 w-20" src="images/logoOne.png" alt="">
+        </div>
+        <div class=" flex flex-col">
+            <div class=" bg-slate-200">
+                <div class="flex flex-row gap-5 justify-end w-[55rem] items-center text-[#3336]  font-bold">
+                    <div class=" flex flex-row items-center gap-1"><div><img class="h-4 w-4" src="/images/Letter.png" alt=""></div><p class="text-xs">michelkajibwami&#64;gmail.com</p></div>
+                    <div  class=" flex flex-row items-center gap-1"><div><img class="h-4 w-4" src="/images/Ringer.png" alt=""></div><p class="text-xs">+243970607351</p></div>
+                    <button class="bg-orange-300 shadow-2xl p-1 text-white hover:bg-sky-500 transition duration-300">Faire un Don</button>
+                </div>
+            </div>
+            <div class="bg-white flex flex-row">
+                <nav class="flex flex-row bg-slate-100 w-[55rem] justify-between">
+                    <ul class=" flex flex-row gap-3 text-[#4a494977]">
+                        <li routerLink ="" routerLinkActive="font-bold bg-white border-t-4 border-t-red-500" [routerLinkActiveOptions]="{ exact: true }" class="hover:bg-white hover:font-bold transition duration-300 w-32 p-5 text-center text-xs cursor-pointer ">Accueil</li>
+                        <li routerLink="about" routerLinkActive="font-bold bg-white border-t-4 border-t-red-500" class="hover:bg-white hover:font-bold transition duration-300 w-32 p-5 text-center text-xs cursor-pointer">A propos</li>
+                        <li routerLink="actuality" routerLinkActive="font-bold bg-white border-t-4 border-t-red-500" class="hover:bg-white hover:font-bold transition duration-300 w-32 p-5 text-center text-xs cursor-pointer">Actualité</li>
+                        <li routerLink="cause" routerLinkActive="font-bold bg-white border-t-4 border-t-red-500" class="hover:bg-white hover:font-bold transition duration-300 w-32 p-5 text-center text-xs cursor-pointer">Causes</li>
+                    </ul>
+                    <div class=" flex flex-row items-center gap-5 mr-4">
+                        <div><img class=" h-4 w-4" src="images/TwitterX.png" alt=""></div>
+                        <div><img class=" h-4 w-4" src="images/YouTube.png" alt=""></div>
+                        <div><img class=" h-4 w-4" src="images/LinkedIn.png" alt=""></div>
+                        <div><img class=" h-4 w-4" src="images/Facebook.png" alt=""></div>
+                    </div>
+                </nav>
             </div>
         </div>
-        <div class="bg-white flex flex-row">
-            <nav class="flex flex-row bg-slate-100 w-[55rem] justify-between">
-                <ul class=" flex flex-row gap-3 text-[#4a494977]">
-                    <li routerLink ="" routerLinkActive="font-bold bg-white border-t-4 border-t-red-500" [routerLinkActiveOptions]="{ exact: true }" class="hover:bg-white hover:font-bold transition duration-300 w-32 p-5 text-center text-xs cursor-pointer ">Accueil</li>
-                    <li routerLink="about" routerLinkActive="font-bold bg-white border-t-4 border-t-red-500" class="hover:bg-white hover:font-bold transition duration-300 w-32 p-5 text-center text-xs cursor-pointer">A propos</li>
-                    <li routerLink="actuality" routerLinkActive="font-bold bg-white border-t-4 border-t-red-500" class="hover:bg-white hover:font-bold transition duration-300 w-32 p-5 text-center text-xs cursor-pointer">Actualité</li>
-                    <li routerLink="cause" routerLinkActive="font-bold bg-white border-t-4 border-t-red-500" class="hover:bg-white hover:font-bold transition duration-300 w-32 p-5 text-center text-xs cursor-pointer">Causes</li>
-                </ul>
-                <div class=" flex flex-row items-center gap-5 mr-4">
-                    <div><img class=" h-4 w-4" src="images/TwitterX.png" alt=""></div>
-                    <div><img class=" h-4 w-4" src="images/YouTube.png" alt=""></div>
-                    <div><img class=" h-4 w-4" src="images/LinkedIn.png" alt=""></div>
-                    <div><img class=" h-4 w-4" src="images/Facebook.png" alt=""></div>
-                </div>
-            </nav>
-        </div>
+    
     </div>
-
+    
 </div>
+
 
  <div class=" fixed block bg-opacity-20 md:hidden w-full z-50 bg-white">
     <div class=" flex flex-row justify-between items-center p-6">
