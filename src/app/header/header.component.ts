@@ -12,8 +12,8 @@ import { NgClass } from '@angular/common';
 })
 export class HeaderComponent {
   isScrolled= false;
-  
-  @HostListener('window.scroll', [])
+
+  @HostListener('window:scroll', [])
   onWindowScrolled(){
     this.isScrolled = window.scrollY >50;
   }
