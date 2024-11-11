@@ -2,7 +2,7 @@
 <div class=" hidden md:block">
     <div [ngClass]="isScrolled? 'flex top-0 flex-row w-[60rem] gap-5 fixed inset-0 mx-auto font-bold h-[6rem] z-50 items-center  bg-white ' : 'flex top-5  flex-row w-[60rem] gap-5 fixed inset-0 mx-auto font-bold h-[6rem] z-50 items-center  bg-white ' " class=" ">
         <div class="">
-            <img class="h-10 w-20" src="images/logoOne.png" alt="">
+            <img class="h-14 w-20" src="images/logo.jpg" alt="">
         </div>
         <div class=" flex flex-col">
             <div class=" bg-slate-200">
@@ -37,8 +37,8 @@
 
  <div [ngClass]="isScrolled ? 'fixed block md:hidden w-full z-50 bg-slate-900 transition duration-300': 'fixed block bg-opacity-20 md:hidden w-full z-50 bg-white' ">
     <div class=" flex flex-row justify-between items-center p-6">
-        <div><img class=" h-8 w-14" src="images/logoOne.png" alt=""></div>
-        <div><img (click)="modal.showModal()" class=" h-8 w-8" src="images/Menu.png" alt=""></div>
+        <div><img class=" h-10  w-10 rounded-full" src="images/logo.jpg" alt=""></div>
+        <div><img (click)="modal.showModal()" class=" h-10 w-10" src="images/Menu.png" alt=""></div>
     </div>
     <app-menu-modal #modal/>
  </div>
