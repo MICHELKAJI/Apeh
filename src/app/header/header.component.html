@@ -36,8 +36,8 @@
 
 
  <div [ngClass]="isScrolled ? 'fixed block md:hidden w-full shadow-2xl z-50 bg-slate-900 transition duration-300': 'fixed block bg-opacity-20 md:hidden w-full z-50 bg-white' ">
-    <div class=" flex flex-row justify-between items-center p-6">
-        <div><img class=" h-10  w-10 rounded-full" src="images/logo.jpg" alt=""></div>
+    <div class=" flex flex-row justify-between items-center p-4">
+        <div><img appNavigationMenu="" class=" h-10  w-10 rounded-full" src="images/logo.jpg" alt=""></div>
         <div><img (click)="modal.showModal()" class=" h-10 w-10" src="images/Menu.png" alt=""></div>
     </div>
     <app-menu-modal #modal/>

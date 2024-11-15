@@ -1,0 +1,17 @@
+<div class="relative w-full h-60  overflow-hidden z-0">
+    <!-- Slide container -->
+    <div class="absolute inset-0 flex transition-transform duration-1000 ease-in-out"[ngStyle]="{'transform': 'translateX(-' + currentIndex * 100 + '%)'}">
+      <div *ngFor="let image of images" class="w-full flex-shrink-0 rounded-t-lg">
+        <div class="">
+            <div class="">
+                <img class=" h-60 w-80 rounded-tl-lg object-cover" src={{image.post}} alt="photo">
+            </div>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Indicators for the current slide -->
+  
+    <!-- Slide counter -->
+  </div>
+  

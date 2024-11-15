@@ -2,32 +2,23 @@ import { Component, OnInit } from '@angular/core';
 import { Data, ServiceNewslatterService } from '../service-newslatter.service';
 import { NgClass, NgFor } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { RouterLink } from '@angular/router';
 import { NavigationMenuDirective } from '../navigation-menu.directive';
+import { CarouselPhotoComponent } from '../carousel-photo/carousel-photo.component';
 
 @Component({
   selector: 'app-call-to-action',
   standalone: true,
-  imports: [NgFor, FormsModule, NgClass, RouterLink, NavigationMenuDirective],  // Retirer BrowserModule et HttpClientModule ici
+  imports: [NgFor, FormsModule, NgClass, RouterLink, NavigationMenuDirective, CarouselPhotoComponent],  // Retirer BrowserModule et HttpClientModule ici
   templateUrl: './call-to-action.component.html',
   styleUrls: ['./call-to-action.component.css']
 })
-export class CallToActionComponent implements OnInit{
+export class CallToActionComponent {
   mail: string = '';  // Propriété liée à l'input
   message: string = ''; // Pour afficher un message de succès ou d'erreur
   messageType : string='';
-  constructor(private newsletterService: ServiceNewslatterService, private route: ActivatedRoute) { }
+  constructor(private newsletterService: ServiceNewslatterService) { }
 
-  ngOnInit(): void {
-    this.route.fragment.subscribe(fragment =>{
-      if(fragment){
-        const element = document.getElementById(fragment);
-        if(element){
-          element.scrollIntoView({behavior: 'smooth'});
-        }
-      }
-    })
-  }
 
   submitEmail(): void {
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
