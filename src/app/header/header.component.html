@@ -1,6 +1,6 @@
 <header class="">
 <div class=" hidden md:block">
-    <div [ngClass]="isScrolled? 'flex bg-slate-200 top-0 transition duration-300 flex-row w-[60rem] gap-5 fixed inset-0 mx-auto font-bold h-[6rem] z-50 items-center ' : 'flex top-5  flex-row w-[60rem] gap-5 fixed inset-0 mx-auto font-bold h-[6rem] z-50 items-center  bg-white ' " class=" ">
+    <div [ngClass]="isScrolled? 'flex bg-slate-200 shadow-2xl top-0 transition duration-300 flex-row w-[60rem] gap-5 fixed inset-0 mx-auto font-bold h-[6rem] z-50 items-center ' : 'flex top-5  flex-row w-[60rem] gap-5 fixed inset-0 mx-auto font-bold h-[6rem] z-50 items-center  bg-white ' " class=" ">
         <div class="">
             <img class="h-14 w-20 rounded-full " src="images/logo.jpg" alt="logo">
         </div>
@@ -35,7 +35,7 @@
 </div>
 
 
- <div [ngClass]="isScrolled ? 'fixed block md:hidden w-full z-50 bg-slate-900 transition duration-300': 'fixed block bg-opacity-20 md:hidden w-full z-50 bg-white' ">
+ <div [ngClass]="isScrolled ? 'fixed block md:hidden w-full shadow-2xl z-50 bg-slate-900 transition duration-300': 'fixed block bg-opacity-20 md:hidden w-full z-50 bg-white' ">
     <div class=" flex flex-row justify-between items-center p-6">
         <div><img class=" h-10  w-10 rounded-full" src="images/logo.jpg" alt=""></div>
         <div><img (click)="modal.showModal()" class=" h-10 w-10" src="images/Menu.png" alt=""></div>

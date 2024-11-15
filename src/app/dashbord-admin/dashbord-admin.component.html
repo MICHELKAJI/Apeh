@@ -1,21 +1,21 @@
 <main class="bg-slate-950 h-screen w-full p-14 rounded-md flex flex-row gap-10">
     <div class="bg-slate-50 h-[40rem] w-40 rounded-3xl flex flex-col justify-center items-center">
         <nav class="">
-            <ul class=" flex flex-col gap-10 ">
-                <li>
-                    <div><img src="" alt=""> <p>NewsLetter</p></div>
+            <ul class=" flex flex-col gap-5 bg-slate-300 p-5 shadow-2xl rounded-xl border border-white ">
+                <li class="p-2 hover:bg-blue-600 transition rounded-lg duration-300  cursor-pointer hover:text-white font-bold">
+                    <div (click)="showNews()"><img src="" alt=""> <p>NewsLetter</p></div>
                 </li>
-                <li>
-                    <div><img src="" alt=""><p>Donateur</p></div>
+                <li class="p-2 hover:bg-blue-600 transition  rounded-lg  duration-300 cursor-pointer hover:text-white font-bold">
+                    <div (click)="showDonate()"><img src="" alt=""><p>Donateur</p></div>
                 </li>
-                <li>
-                    <div><img src="" alt=""><p>Collecte</p></div>
+                <li class="p-2 hover:bg-blue-600 transition  rounded-lg duration-300 cursor-pointer hover:text-white font-bold">
+                    <div (click)="showCollect()"><img src="" alt=""><p>Collecte</p></div>
                 </li>
-                <li>
-                    <div><img src="" alt=""><p>Articles</p></div>
+                <li class="p-2  hover:bg-blue-600 transition rounded-lg  duration-300 cursor-pointer hover:text-white font-bold">
+                    <div (click)="showArticle()"><img src="" alt=""><p>Articles</p></div>
                 </li>
-                <li>
-                    <div><img src="" alt="">Activité</div>
+                <li class="p-2 hover:bg-blue-600 transition  rounded-lg duration-300 cursor-pointer hover:text-white font-bold">
+                    <div (click)="showActivity()"><img src="" alt="">Activité</div>
                 </li>
             </ul>
         </nav>
@@ -27,6 +27,22 @@
             <div class="bg-white rounded-lg h-40 w-64"></div>
             <div class="bg-white rounded-lg h-40 w-64"></div>
         </div>
-        <div class="bg-white rounded h-[29rem] w-full"></div>
+        <div class="bg-white rounded h-[29rem] w-full">
+            <div *ngIf="selected === 'news'">
+                <app-dash-news/>
+            </div>
+            <div *ngIf="selected === 'donation'">
+                <app-dash-donat/>
+            </div>
+            <div *ngIf="selected === 'collect'">
+                <app-dash-collect/>
+            </div>
+            <div *ngIf="selected === 'article'">
+                <app-dash-article/>
+            </div>
+            <div *ngIf="selected === 'activity'">
+                <app-dash-activity/>
+            </div>
+        </div>
     </div>
 </main>
