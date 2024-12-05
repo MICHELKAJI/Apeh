@@ -19,6 +19,13 @@ export class DoDonationService {
 
   postDatas(data: Data): Observable<Data> {
     return this.httpClient.post<Data>(this.urlapi, data);
+  };
+
+  getDatas(): Observable<Data[]> {
+    return this.httpClient.get<Data[]>(this.urlapi);
+  };
+  deleteDats(idDonateur: number): Observable<any> {
+    return this.httpClient.delete(`${this.urlapi}/${idDonateur}`);
   }
 }
 

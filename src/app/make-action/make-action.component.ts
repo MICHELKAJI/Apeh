@@ -6,7 +6,7 @@ import { DoDonationService, Data } from '../do-donation.service';
 @Component({
   selector: 'app-make-action',
   standalone: true,
-  imports: [ NgClass, NgFor, FormsModule],
+  imports: [ NgClass, FormsModule],
   templateUrl: './make-action.component.html',
   styleUrl: './make-action.component.css'
 })
@@ -22,8 +22,8 @@ export class MakeActionComponent {
 
   submitNewDonation() : void {
     const nomRegex = /^.{3,30}$/;
-    const telRegex = /^\+?\d{1,3}[-. ]?\d{1,4}[-. ]?\d{1,4}[-. ]?\d{1,9}$/;
-    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    const telRegex = /^\+?[1-9]\d{1,14}$/;
+    const emailRegex = /^[\w\.-]+@[a-zA-Z\d\.-]+\.[a-zA-Z]{2,}$/;
     const villeRegex = /^.{3,30}$/;
 
 
@@ -70,10 +70,5 @@ export class MakeActionComponent {
       }
     });
   }
-  
-
-   
-
-
 
 }

@@ -1,15 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Data, ServiceNewslatterService } from '../service-newslatter.service';
-import { NgClass, NgFor } from '@angular/common';
+import { NgClass } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { RouterLink } from '@angular/router';
 import { NavigationMenuDirective } from '../navigation-menu.directive';
 import { CarouselPhotoComponent } from '../carousel-photo/carousel-photo.component';
 
 @Component({
   selector: 'app-call-to-action',
   standalone: true,
-  imports: [NgFor, FormsModule, NgClass, RouterLink, NavigationMenuDirective, CarouselPhotoComponent],  // Retirer BrowserModule et HttpClientModule ici
+  imports: [ FormsModule, NgClass, NavigationMenuDirective, CarouselPhotoComponent],  // Retirer BrowserModule et HttpClientModule ici
   templateUrl: './call-to-action.component.html',
   styleUrls: ['./call-to-action.component.css']
 })
@@ -21,7 +20,7 @@ export class CallToActionComponent {
 
 
   submitEmail(): void {
-    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    const emailRegex = /^[\w\.-]+@[a-zA-Z\d\.-]+\.[a-zA-Z]{2,}$/;
     if (!emailRegex.test(this.mail)) {
       this.message = 'Veuillez entrer un email valide.';
       return; // Arrêter l'exécution si l'email est invalide

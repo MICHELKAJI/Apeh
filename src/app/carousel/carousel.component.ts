@@ -1,6 +1,7 @@
-
 import { NgFor, NgStyle } from '@angular/common';
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { ActualityService } from '../actuality-service.service';
+
 
 @Component({
   selector: 'app-carousel',
@@ -10,22 +11,21 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
   styleUrl: './carousel.component.css'
 })
 export class CarouselComponent implements OnInit, OnDestroy {
-  images = [
-    {titre: "Recolte de fond pour les enfant de la rue de Bukavu", post: "/images/bg.jpg"},
-    {titre: "Recolte de fond pour les enfant de la rue de Kinshasa", post: "/images/bg.jpg"},
-    {titre: "Recolte de fond pour les enfant de la rue de Kinshasa", post: "/images/banner.jpeg"},
-    {titre: "Recolte de fond pour les enfant de la rue de Kinshasa", post: "/images/about.jpg"},
-    {titre: "Recolte de fond pour les enfant de la rue de Kinshasa", post: "/images/bg.jpg"},
-    {titre: "Recolte de fond pour les enfant de la rue de Kinshasa", post: "/images/kid.jpg"},
-    
-  ];
+  images: any[] = [];
   currentIndex: number = 0;
   intervalId: any;
   totalImages: number = 0;
 
+  constructor(private actualiteService: ActualityService) {}
+
   ngOnInit() {
-    this.totalImages = this.images.length;
-    this.startAutoSlide();
+    this.actualiteService.getDatas().subscribe(
+      (actualites) => {
+        this.images = actualites;
+        this.totalImages = this.images.length;
+        this.startAutoSlide();
+      }
+    );
   }
 
   ngOnDestroy() {

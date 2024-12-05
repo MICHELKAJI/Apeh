@@ -1,4 +1,41 @@
-<div class="bg-red-500 h-60 w-80">
-    <h1>news</h1>
+<div class="bg-slate-100 h-96 w-full">
+    <div class="flex flex-row items-center justify-between w-full">
+        <div><h2 class="font-bold p-5 text-[#3339]">Liste des abonnés</h2></div>
+        <div class="flex items-center bg-white shadow-md rounded-full px-3 py-2 max-w-md mr-4">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+            <input 
+                type="text" 
+                placeholder="Rechercher..." 
+                class="w-full px-4 py-2 text-gray-700 bg-transparent outline-none"
+            />
+        </div>
+    </div>
+    <div class="p-5">
+        <div class="overflow-y-auto h-72">
+            <table class="w-full border-collapse bg-white shadow-md rounded-lg">
+                <thead class="bg-slate-200">
+                    <tr class=" text-[#3339]">
+                        <th class="border px-4 py-2 font-bold sticky top-0 bg-slate-200">N°</th>
+                        <th class="border px-4 py-2 font-bold sticky top-0 bg-slate-200">Email</th>
+                        <th class="border px-4 py-2 font-bold sticky top-0 bg-slate-200">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of data; let i = index" class="border-t hover:bg-slate-50">
+                        <td class="border px-4 py-2">{{ i + 1 }}</td>
+                        <td class="border px-4 py-2 text-[#3339]">{{ item.mail }}</td>
+                        <td class="border px-4 py-2 flex justify-center items-center">
+                            <button 
+                                (click)="deleteNewsletter(item.idNewsLetter)"
+                                class="p-2 hover:bg-red-50 rounded-full transition-colors"
+                                [disabled]="isDeleting"
+                                title="Supprimer l'abonné">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#db0a0a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash-2"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/><line x1="10" x2="10" y1="11" y2="17"/><line x1="14" x2="14" y1="11" y2="17"/></svg>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
-

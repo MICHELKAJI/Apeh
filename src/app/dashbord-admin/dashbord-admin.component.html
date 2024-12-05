@@ -1,48 +1,97 @@
-<main class="bg-slate-950 h-screen w-full p-14 rounded-md flex flex-row gap-10">
-    <div class="bg-slate-50 h-[40rem] w-40 rounded-3xl flex flex-col justify-center items-center">
-        <nav class="">
-            <ul class=" flex flex-col gap-5 bg-slate-300 p-5 shadow-2xl rounded-xl border border-white ">
-                <li class="p-2 hover:bg-blue-600 transition rounded-lg duration-300  cursor-pointer hover:text-white font-bold">
-                    <div (click)="showNews()"><img src="" alt=""> <p>NewsLetter</p></div>
-                </li>
-                <li class="p-2 hover:bg-blue-600 transition  rounded-lg  duration-300 cursor-pointer hover:text-white font-bold">
-                    <div (click)="showDonate()"><img src="" alt=""><p>Donateur</p></div>
-                </li>
-                <li class="p-2 hover:bg-blue-600 transition  rounded-lg duration-300 cursor-pointer hover:text-white font-bold">
-                    <div (click)="showCollect()"><img src="" alt=""><p>Collecte</p></div>
-                </li>
-                <li class="p-2  hover:bg-blue-600 transition rounded-lg  duration-300 cursor-pointer hover:text-white font-bold">
-                    <div (click)="showArticle()"><img src="" alt=""><p>Articles</p></div>
-                </li>
-                <li class="p-2 hover:bg-blue-600 transition  rounded-lg duration-300 cursor-pointer hover:text-white font-bold">
-                    <div (click)="showActivity()"><img src="" alt="">Activité</div>
-                </li>
-            </ul>
-        </nav>
-    </div>
-    <div class=" pt-24 flex flex-col gap-5 rounded-lg">
-        <div class=" flex flex-row gap-5 w-[73rem]">
-            <div class="bg-white rounded-lg h-40 w-64"></div>
-            <div class="bg-white rounded-lg h-40 w-64"></div>
-            <div class="bg-white rounded-lg h-40 w-64"></div>
-            <div class="bg-white rounded-lg h-40 w-64"></div>
+<div>
+    <main class=" bg-blue-300 h-screen w-full p-14 rounded-md flex flex-row gap-10">
+        <div class="bg-slate-50 h-[40rem] w-80 rounded-3xl flex flex-col justify-center items-center">
+            <nav class="">
+                <ul class=" flex flex-col gap-5 bg-slate-300 p-2 shadow-2xl rounded-xl border border-white ">
+                    <li class="p-2 transition rounded-lg duration-300 cursor-pointer font-bold relative overflow-hidden group">
+                        <div class="relative z-10 flex flex-row items-center gap-1 group-hover:text-white" (click)="showNews()">
+                            <svg class="group-hover:stroke-white transition-colors duration-300" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mails"><rect width="16" height="13" x="6" y="4" rx="2"/><path d="m22 7-7.1 3.78c-.57.3-1.23.3-1.8 0L6 7"/><path d="M2 8v11c0 1.1.9 2 2 2h14"/></svg>
+                            <p>NewsLetter</p>
+                        </div>
+                        <div class="absolute inset-0 bg-blue-600 -translate-x-full group-hover:translate-x-0 transition-transform duration-300"></div>
+                    </li>
+                    <li class="p-2 transition rounded-lg duration-300 cursor-pointer font-bold relative overflow-hidden group">
+                        <div class="relative z-10 flex flex-row items-center gap-1 group-hover:text-white" (click)="showDonate()">
+                            <svg class="group-hover:stroke-white transition-colors duration-300" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-gift"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13"/><path d="M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7"/><path d="M7.5 8a2.5 2.5 0 0 1 0-5A4.8 8 0 0 1 12 8a4.8 8 0 0 1 4.5-5 2.5 2.5 0 0 1 0 5"/></svg>
+                            <p>Donateur</p>
+                        </div>
+                        <div class="absolute inset-0 bg-blue-600 -translate-x-full group-hover:translate-x-0 transition-transform duration-300"></div>
+                    </li>
+                    <li class="p-2 transition rounded-lg duration-300 cursor-pointer font-bold relative overflow-hidden group">
+                        <div class="relative z-10 flex flex-row items-center gap-1 group-hover:text-white" (click)="showCollect()">
+                            <svg class="group-hover:stroke-white transition-colors duration-300" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-hand-helping"><path d="M11 12h2a2 2 0 1 0 0-4h-3c-.6 0-1.1.2-1.4.6L3 14"/><path d="m7 18 1.6-1.4c.3-.4.8-.6 1.4-.6h4c1.1 0 2.1-.4 2.8-1.2l4.6-4.4a2 2 0 0 0-2.75-2.91l-4.2 3.9"/><path d="m2 13 6 6"/></svg>
+                            <p>Collecte</p>
+                        </div>
+                        <div class="absolute inset-0 bg-blue-600 -translate-x-full group-hover:translate-x-0 transition-transform duration-300"></div>
+                    </li>
+                    <li class="p-2 transition rounded-lg duration-300 cursor-pointer font-bold relative overflow-hidden group">
+                        <div class="relative z-10 flex flex-row items-center gap-1 group-hover:text-white" (click)="showArticle()">
+                            <svg class="group-hover:stroke-white transition-colors duration-300" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-newspaper"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/><path d="M18 14h-8"/><path d="M15 18h-5"/><path d="M10 6h8v4h-8V6Z"/></svg>
+                            <p>Articles</p>
+                        </div>
+                        <div class="absolute inset-0 bg-blue-600 -translate-x-full group-hover:translate-x-0 transition-transform duration-300"></div>
+                    </li>
+                    <li class="p-2 transition rounded-lg duration-300 cursor-pointer font-bold relative overflow-hidden group">
+                        <div class="relative z-10 flex flex-row items-center gap-1 group-hover:text-white" (click)="showActivity()">
+                            <svg class="group-hover:stroke-white transition-colors duration-300" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-logs"><path d="M13 12h8"/><path d="M13 18h8"/><path d="M13 6h8"/><path d="M3 12h1"/><path d="M3 18h1"/><path d="M3 6h1"/><path d="M8 12h1"/><path d="M8 18h1"/><path d="M8 6h1"/></svg>
+                            <p>Activité</p>
+                        </div>
+                        <div class="absolute inset-0 bg-blue-600 -translate-x-full group-hover:translate-x-0 transition-transform duration-300"></div>
+                    </li>
+                </ul>
+            </nav>
         </div>
-        <div class="bg-white rounded h-[29rem] w-full">
-            <div *ngIf="selected === 'news'">
-                <app-dash-news/>
+        <div class=" pt-24 flex flex-col gap-2 rounded-lg lg:w-full xl:h-full xl:w-full">
+            <div class=" flex flex-row gap-5 w-[73rem]">
+                <div class="bg-white rounded-lg h-40 w-64 shadow-2xl border border-gray-400">
+                    <div class="">
+                        <h2 class="text-2xl font-bold p-5 text-[#3339]">Nombre total des abonnés</h2>
+                        <div class="">
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg h-40 w-72 shadow-2xl border border-gray-400"></div>
+                <div class="bg-white rounded-lg h-40 w-72 shadow-2xl border border-gray-400"></div>
+                <div class="bg-white rounded-lg h-40 w-72 shadow-2xl border border-gray-400 p-5 flex flex-col gap-2 justify-center">
+                    <div class="flex flex-row items-center gap-2 group cursor-pointer" (click)="modal.showModal()">
+                        <svg class="group-hover:stroke-blue-600 transition-colors duration-300" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12h8"/><path d="M12 8v8"/></svg>
+                        <p class="group-hover:text-blue-600 transition-colors duration-300">Ajouter une actualité</p>
+                    </div>
+                    <div class="flex flex-row items-center gap-2 group cursor-pointer">
+                        <svg class="group-hover:stroke-blue-600 transition-colors duration-300" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"/><path d="m21.854 2.147-10.94 10.939"/></svg>
+                        <p class="group-hover:text-blue-600 transition-colors duration-300">Envoyer une newsletter</p>
+                    </div>
+                    <div class="flex flex-row items-center gap-2 group cursor-pointer">
+                        <svg class="group-hover:stroke-blue-600 transition-colors duration-300" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12h8"/><path d="M12 8v8"/></svg>
+                        <p class="group-hover:text-blue-600 transition-colors duration-300" (click)="modalActivity.showModal()">Ajouter articlecle</p>
+                    </div>
+                </div>
             </div>
-            <div *ngIf="selected === 'donation'">
-                <app-dash-donat/>
-            </div>
-            <div *ngIf="selected === 'collect'">
-                <app-dash-collect/>
-            </div>
-            <div *ngIf="selected === 'article'">
-                <app-dash-article/>
-            </div>
-            <div *ngIf="selected === 'activity'">
-                <app-dash-activity/>
+            <div class="bg-white rounded h-[29rem] lg:w-full xl:h-full xl:w-full">
+                <div *ngIf="selected === 'news'">
+                    <app-dash-news/>
+                </div>
+                <div *ngIf="selected === 'donation'">
+                    <app-dash-donat/>
+                </div>
+                <div *ngIf="selected === 'collect'">
+                    <app-dash-collect/>
+                </div>
+                <div *ngIf="selected === 'article'">
+                    <app-dash-article/>
+                </div>
+                <div *ngIf="selected === 'activity'">
+                    <app-dash-activity/>
+                </div>
             </div>
         </div>
+    </main>
+    <div>
+        <app-modal-actuality #modal/>
+        <app-modal-activity #modalActivity/>
     </div>
-</main>
+    
+</div>
+
+
