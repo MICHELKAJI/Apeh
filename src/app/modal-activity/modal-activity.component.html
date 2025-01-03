@@ -1,149 +1,90 @@
-<div 
+<div
   class="fixed inset-0 flex justify-center items-center bg-slate-900/80 backdrop-blur-sm z-50 overflow-auto p-4 sm:p-6 md:p-8"
   [ngClass]="{'hidden': !isVisible}">
   
-  <div class="w-full max-w-5xl bg-white rounded-2xl shadow-2xl">
+  <!-- Conteneur principal -->
+  <div class="w-full max-w-4xl bg-white rounded-2xl shadow-xl overflow-hidden">
     <!-- En-tête -->
     <div class="p-6 border-b border-slate-200 flex items-center justify-between">
-      <h2 class="text-xl font-bold text-slate-800">Nouvelle Actualité</h2>
+      <h2 class="text-2xl font-semibold text-slate-800">Nouveau Post</h2>
       <button 
         (click)="closeModal()"
         class="p-2 rounded-full text-slate-500 hover:text-slate-700 hover:bg-slate-100 transition">
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
         </svg>
       </button>
     </div>
 
-    <!-- Contenu du formulaire -->
-    <form class="p-6">
-      <div class="flex flex-col md:flex-row gap-6">
-        <!-- Section principale -->
-        <div class="flex-1 space-y-6">
-          <div class="space-y-2">
-            <label for="title" class="block text-sm font-medium text-slate-700">Titre</label>
-            <input 
-              id="title" 
-              formControlName="title"
-              type="text" 
-              class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-              placeholder="Titre de l'actualité">
-          </div>
-
-          <div class="space-y-2">
-            <label for="type" class="block text-sm font-medium text-slate-700">Type</label>
-            <select 
-              id="type" 
-              formControlName="type" 
-              class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
-              <option value="blog">Blog</option>
-              <option value="activity">Activité</option>
-            </select>
-          </div>
-
-          <div class="space-y-2">
-            <label for="content" class="block text-sm font-medium text-slate-700">Contenu</label>
-            <textarea 
-              id="content" 
-              formControlName="content" 
-              rows="4" 
-              class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-              placeholder="Contenu de l'actualité"></textarea>
-          </div>
-
-          <!-- Bouton "Créer post" -->
-          <div>
-            <button 
-              type="button" 
-              class="flex items-center gap-2 px-6 py-2.5 rounded-lg bg-green-600 text-white font-medium hover:bg-green-700 active:bg-green-800 transition focus:ring-2 focus:ring-green-500 focus:ring-offset-2">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
-              </svg>
-              Créer post
-            </button>
-          </div>
+    <!-- Contenu principal -->
+    <div class="p-6 space-y-8">
+      <!-- Formulaire principal -->
+      <form [formGroup]="postForm" (ngSubmit)="submitPost()" class="space-y-6">
+        <!-- Champ Titre -->
+        <div>
+          <label for="title" class="block text-sm font-medium text-gray-700">Titre</label>
+          <input
+            id="title"
+            type="text"
+            formControlName="title"
+            class="mt-2 block w-full rounded-lg border border-gray-300 shadow-sm px-4 py-2 focus:ring-indigo-500 focus:border-indigo-500"
+            [class.border-red-500]="postForm.get('title')?.invalid && postForm.get('title')?.touched"
+          />
+          <p *ngIf="postForm.get('title')?.invalid && postForm.get('title')?.touched" class="text-sm text-red-600 mt-1">
+            Le titre est obligatoire et doit contenir au moins 3 caractères.
+          </p>
         </div>
 
-        <!-- Section secondaire -->
-        <div class="flex-1 space-y-6">
-          <h3 class="text-lg font-semibold text-slate-700">Ajouter une section</h3>
-
-          <div class="space-y-2">
-            <label for="sectionTitle" class="block text-sm font-medium text-slate-700">Titre de la section</label>
-            <input 
-              id="sectionTitle" 
-              formControlName="sectionTitle" 
-              type="text" 
-              class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-              placeholder="Titre de la section">
-          </div>
-
-          <div class="space-y-2">
-            <label for="sectionContent" class="block text-sm font-medium text-slate-700">Contenu de la section</label>
-            <textarea 
-              id="sectionContent" 
-              formControlName="sectionContent" 
-              rows="2" 
-              class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-              placeholder="Contenu de la section"></textarea>
-          </div>
-
-          <!-- Bouton pour ajouter une image -->
-          <div>
-            <label for="sectionImage" class="block text-sm font-medium text-slate-700">Image de la section</label>
-            <div class="relative flex items-center w-full">
-                <div class="space-y-2 w-full">
-                    <label for="image" class="block text-sm font-semibold text-slate-700">Image</label>
-                    <div class="relative">
-                      <div class="flex items-center justify-center w-full">
-                        <label class="relative flex flex-col w-full h-32 border-2 border-dashed border-slate-200 rounded-lg cursor-pointer hover:border-blue-400 hover:bg-blue-50/50 transition-colors duration-200 overflow-hidden">
-                          <!-- Prévisualisation de l'image -->
-                          <div class="absolute inset-0 w-full h-full">
-                            <img [src]="" alt="Prévisualisation" class="w-full h-full object-contain p-2">
-                          </div>
-                          <!-- Zone de upload avec icône et texte -->
-                          <div [class.opacity-0]="" class="absolute inset-0 flex flex-col items-center justify-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 text-slate-400 group-hover:text-slate-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                            </svg>
-                            <p class="pt-1 text-sm tracking-wider text-slate-400 group-hover:text-slate-600">Sélectionnez une image</p>
-                          </div>
-                          <input type="file" class="opacity-0 absolute inset-0 cursor-pointer">
-                        </label>
-                      </div>
-                    </div>
-                </div>
-            </div>
-          </div>
-
-          <!-- Bouton "Ajouter section" -->
-          <div>
-            <button 
-              type="button" 
-              class="flex items-center gap-2 px-6 py-2.5 rounded-lg bg-purple-600 text-white font-medium hover:bg-purple-700 active:bg-purple-800 transition focus:ring-2 focus:ring-purple-500 focus:ring-offset-2">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
-              </svg>
-              Ajouter section
-            </button>
-          </div>
+        <!-- Champ Contenu -->
+        <div>
+          <label for="content" class="block text-sm font-medium text-gray-700">Contenu</label>
+          <textarea
+            id="content"
+            formControlName="content"
+            rows="5"
+            class="mt-2 block w-full rounded-lg border border-gray-300 shadow-sm px-4 py-2 focus:ring-indigo-500 focus:border-indigo-500"
+            [class.border-red-500]="postForm.get('content')?.invalid && postForm.get('content')?.touched"
+          ></textarea>
+          <p *ngIf="postForm.get('content')?.invalid && postForm.get('content')?.touched" class="text-sm text-red-600 mt-1">
+            Le contenu est obligatoire et doit contenir au moins 10 caractères.
+          </p>
         </div>
-      </div>
 
-      <!-- Actions -->
-      <div class="flex justify-end gap-4 mt-6 border-t border-slate-200 pt-4">
-        <button 
-          type="button" 
-          (click)="closeModal()" 
-          class="px-4 py-2 text-sm font-medium text-slate-600 border border-slate-300 rounded-lg hover:bg-slate-100 transition">
-          Annuler
-        </button>
-        <button 
-          type="submit" 
-          class="px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition">
-          Publier
-        </button>
-      </div>
-    </form>
+        <!-- Champ Type -->
+        <div>
+          <label for="type" class="block text-sm font-medium text-gray-700">Type</label>
+          <select
+            id="type"
+            formControlName="type"
+            class="mt-2 block w-full rounded-lg border border-gray-300 shadow-sm px-4 py-2 focus:ring-indigo-500 focus:border-indigo-500"
+            [class.border-red-500]="postForm.get('type')?.invalid && postForm.get('type')?.touched"
+          >
+            <option value="" disabled>Sélectionner un type</option>
+            <option value="news">Actualité</option>
+            <option value="blog">Blog</option>
+            <option value="announcement">Annonce</option>
+          </select>
+          <p *ngIf="postForm.get('type')?.invalid && postForm.get('type')?.touched" class="text-sm text-red-600 mt-1">
+            Le type est obligatoire.
+          </p>
+        </div>
+
+        <!-- Boutons d'action -->
+        <div class="flex justify-end space-x-4">
+          <button
+            type="button"
+            class="px-4 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600 shadow-md transition"
+            (click)="closeModal()">
+            Annuler
+          </button>
+          <button
+            type="submit"
+            class="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 shadow-md transition disabled:opacity-50"
+            [disabled]="isSubmitting || postForm.invalid">
+            Publier
+          </button>
+        </div>
+      </form>
+    </div>
   </div>
 </div>

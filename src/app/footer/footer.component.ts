@@ -1,6 +1,6 @@
 import { Component} from '@angular/core';
 import { NavigationMenuDirective } from '../navigation-menu.directive';
-import { NgClass, NgFor } from '@angular/common';
+import { NgClass } from '@angular/common';
 import { Data, ServiceNewslatterService } from '../service-newslatter.service';
 import { ActivatedRoute } from '@angular/router';
 import { FormsModule } from '@angular/forms';
@@ -9,7 +9,7 @@ import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-footer',
   standalone: true,
-  imports: [ NavigationMenuDirective, NgClass, NgFor, FormsModule],
+  imports: [ NavigationMenuDirective, NgClass, FormsModule],
   templateUrl: './footer.component.html',
   styleUrl: './footer.component.css'
 })

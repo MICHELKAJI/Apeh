@@ -8,6 +8,7 @@ import { DashArticleComponent } from '../dash-article/dash-article.component';
 import { ServiceNewslatterService } from '../service-newslatter.service';
 import { ModalActualityComponent } from '../modal-actuality/modal-actuality.component';
 import { ModalActivityComponent } from '../modal-activity/modal-activity.component';
+import { ModalePostSectionComponent } from '../modale-post-section/modale-post-section.component';
 
 
 
@@ -15,7 +16,7 @@ import { ModalActivityComponent } from '../modal-activity/modal-activity.compone
 @Component({
   selector: 'app-dashbord-admin',
   standalone: true,
-  imports: [ DashNewsComponent, DashCollectComponent, DashDonatComponent, DashActivityComponent, DashArticleComponent, NgIf, ModalActualityComponent, ModalActivityComponent],
+  imports: [ DashNewsComponent, DashCollectComponent, DashDonatComponent, DashActivityComponent, DashArticleComponent, NgIf, ModalActualityComponent, ModalActivityComponent, ModalePostSectionComponent],
   templateUrl: './dashbord-admin.component.html',
   styleUrl: './dashbord-admin.component.css'
 })

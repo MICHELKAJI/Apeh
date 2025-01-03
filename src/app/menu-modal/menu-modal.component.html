@@ -1,14 +1,22 @@
 <div>
-    <div class="fixed inset-0  flex  justify-start h-full w-full bg-black bg-opacity-25" [ngClass]="{'hidden': !isVisible}">
-        <div  class= "bg-white w-60">
-        <span (click)="closeModal()" class=" p-4 text-xl text-black">&times;</span>
-        <ul class="text-black p-10 flex flex-col gap-5 mt-20">
-            <li appNavigationMenu="" (click)="closeModal()">Accueil</li>
-            <li appNavigationMenu="/about" (click)="closeModal()">A propos</li>
-            <li appNavigationMenu="/actuality" (click)="closeModal()">Actualités</li>
-            <li appNavigationMenu="/cause" (click)="closeModal()">Projets</li>
-            <li appNavigationMenu="">Don</li>
-        </ul>
-    </div>
+    <div (click)="closeModal()" class="fixed inset-0  flex  justify-start h-full w-full bg-black bg-opacity-50" [ngClass]="{'hidden': !isVisible}">
+      <div  class= "bg-white w-60 h-screen">
+        <span (click)="closeModal()" class="p-4 text-3xl rounded-full text-slate-500 text-justify transition">&times;</span>
+        <div class=" flex flex-col justify-between h-screen">
+            <ul class="text-black p-10 flex flex-col gap-5 mt-20">
+                <li appNavigationMenu="" (click)="closeModal()">Accueil</li>
+                <li appNavigationMenu="/about" (click)="closeModal()">A propos</li>
+                <li appNavigationMenu="/actuality" (click)="closeModal()">Actualités</li>
+                <li appNavigationMenu="/cause" (click)="closeModal()">Projets</li>
+            </ul>
+
+            <div class=" flex flex-col justify-center p-10">
+                <button appNavigationMenu="" class="relative bg-orange-400 p-2 w-auto lg:w-60 overflow-hidden rounded border border-white text-white group">
+                    <span class="absolute inset-0 bg-sky-500 translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-300 ease-out"></span>
+                    <span class="relative z-10">Faire un Don</span>
+                 </button>
+            </div>
+        </div>
+      </div>
     </div>
 </div>

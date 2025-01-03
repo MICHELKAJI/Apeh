@@ -1,54 +1,48 @@
+
 <div>
-<main class="bg-slate-950 h-auto flex flex-col gap-10 w-full">
-  <div class="flex lg:flex-row flex-col lg:pt-64 pt-20 lg:pl-[16.5rem] gap-3">
-    <div class="lg:h-[15rem] lg:w-[30rem] bg-slate-500"><app-carousel/></div>
+<main class="bg-slate-950 flex flex-col justify-center items-center gap-20 w-full">
+  <div class="flex lg:h-screen h:auto flex-col lg:pt-32 pt-20 gap-3">
+    <div class="lg:w-[60rem] bg-slate-500"><app-carousel/></div>
     <div class="flex flex-col gap-4 px-5">
-      <h2 class="lg:text-2xl text-5xl text-center lg:p-0 p-10 text-white font-bold">Nos dernières activités</h2>
-      <div class="bg-white rounded-lg">
-        <div class="flex flex-row gap-2 px-5 pt-5"><img class="h-6 w-6" src="/images/calender.png" alt=""> <span>13</span> <span>Octobre</span></div>
-        <div class="flex felx-col gap-2">
-          <div class=" flex flex-row  gap-3 p-5">
-            <img class="h-24 w-36 shadow-lg rounded-lg" src="/images/backg.jpeg" alt="">
-            <div>
-              <h2 class="font-bold text-2xl lg:w-[17rem] ">Visite de lorphelinat Maman du monde</h2>
-              <p class="text-blue-600 font-light lg:text-right">Savoir plus...</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="bg-white rounded-lg">
-        <div class="flex flex-row gap-2 px-5 pt-5"><img class="h-6 w-6" src="/images/calender.png" alt=""> <span>13</span> <span>Octobre</span></div>
+      <h2 class="lg:text-5xl text-5xl text-center lg:p-10 p-10 text-white font-bold">Nos dernières activités</h2>
+      
+      <div (click)="openModal(items)" *ngFor="let items of articles; let i = index" class="bg-white rounded-lg cursor-pointer">
+        <div class="flex flex-row gap-2 px-5 pt-5"><img class="h-6 w-6" src="/images/calender.png" alt=""> <span>{{ items.createdAt|date:' le d MMMM yyy à HH:mm' }}</span></div>
         <div class="flex felx-col gap-2">
           <div class=" flex flex-row gap-3 p-5">
             <img class="h-24 w-36 shadow-xl rounded-lg" src="/images/backg.jpeg" alt="">
             <div>
-              <h2 class="font-bold text-2xl lg:w-[17rem]">Visite de lorphelinat Maman du monde</h2>
-              <p class="text-blue-600 font-light lg:text-right">Savoir plus...</p>
+              <h2 class="font-bold text-2xl lg:w-[17rem]">{{items.title}}</h2>
+                <p class="font-light text-sm md:text-base lg:w-[30rem]">
+                  {{ items.content | slice:0:100 }}...<span class="text-blue-600 hover:text-red-600 cursor-pointer self-start lg:self-center">
+                    voir plus
+                  </span>
+                </p>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <div>
-     <h2 class="text-5xl text-center p-10 text-white font-bold">Nos derniers acticles</h2>
-     <div class="flex lg:flex-row flex-col justify-center gap-5 lg:items-end items-center">
-      <div class="bg-white h-36 w-96 rounded-2xl p-3 hover:bg-cyan-400 transition duration-300">
-        <div class="flex flex-row gap-2 bg-slate-900 p-2 text-white w-32 rounded-2xl"><img class="h-6 w-6" src="/images/calender.png" alt=""> <span>13</span> <span>Octobre</span></div>
-        <h2 class="text-2xl font-light">Visite de la prison centrale de Bukavu...</h2>
-        <div class="flex flex-row justify-end"><button class="text-white font-bold p-5 w-10 bg-white rounded-full h-6"></button></div>
-      </div>
-      <div class="bg-white h-36 w-96 rounded-2xl p-3 hover:bg-cyan-400 transition duration-300">
-        <div class="flex flex-row gap-2 bg-slate-900 p-2 text-white w-32 rounded-2xl"><img class="h-6 w-6" src="/images/calender.png" alt=""> <span>13</span> <span>Octobre</span></div>
-        <h2 class="text-2xl font-light">Visite de la prison centrale de Bukavu...</h2>
-        <div class="flex flex-row justify-end"><button class="text-white font-bold p-5 w-10 bg-white rounded-full h-6"></button></div>
-      </div>
-      <button class="bg-orange-400 h-10 w-24 rounded-lg text-white hover:bg-blue-500 transition duration-300 animate-bounce">Voir plus...</button>
+  <div class=" lg:px-0 flex flex-col justify-center items-center">
+        <h2 class="text-5xl text-center p-10 text-white font-bold">Nos derniers articles</h2>
+    <div class="flex flex-col lg:flex-row justify-start gap-5 lg:items-start items-center flex-wrap lg:w-[60rem] w-auto">
+        <div (click)="openModal(item)"  *ngFor="let item of article; let i = index" class="bg-white h-36 w-full lg:w-96  rounded-2xl p-3 hover:bg-cyan-400 transition duration-300 cursor-pointer">
+          <div  class="flex flex-row gap-2 bg-slate-900 p-2 text-white w-auto rounded-2xl"><img class="h-6 w-6" src="/images/calender.png" alt=""> <span>{{ item.createdAt|date:' le d MMMM yyy à HH:mm' }}</span></div>
+            <h2 class="text-2xl font-light">{{item.title}}</h2>
+          <div class="flex flex-row justify-end"><button class="text-white font-bold p-5 w-10 bg-white rounded-full h-6"></button></div>
+        </div>
+  
+            <button class="bg-orange-400 h-10 w-full lg:w-24 rounded-lg text-white hover:bg-blue-500 transition duration-300 animate-bounce">Voir plus...</button>
     </div>
   </div>
   <div>
     <app-footer/>
   </div>
 </main>
+ <div>
+  <app-modal-article-details #modalSection/>
+ </div>
 </div>
+
   
