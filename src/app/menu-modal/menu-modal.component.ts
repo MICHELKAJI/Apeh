@@ -16,22 +16,26 @@ export class MenuModalComponent {
   @ViewChild('box') box!:ElementRef
 
   isVisible = false;
-  showModal(){
-    this.isVisible=true;
+  showModal() {
+    this.isVisible = true;
     gsap.fromTo(
       this.modal.nativeElement,
-      { opacity: 0, scale: 0.5 }, // Démarre avec une échelle petite et invisible
-      { opacity: 1, scale: 1, duration: 0.5, ease: "back.out(1.7)" } // Animation fluide d'apparition
+      { opacity: 0, x: "-100%" }, // Commence à gauche (hors écran)
+      { opacity: 1, x: "0%", duration: 0.5, ease: "power3.out" } // Arrive au centre
     );
   }
-
-  closeModal(){
-    gsap.to(this.modal.nativeElement, { opacity: 0, scale: 0.5, duration: 0.3 });
-
-    setTimeout(() => {
-      this.isVisible = false;
-      this.closeModalEvent.emit(); // Notifier le parent une fois l'animation terminée
-    }, 300); // Attendre la fin de l'animation avant de changer l'état de la visibilité
+  
+  closeModal() {
+    gsap.to(this.modal.nativeElement, {
+      opacity: 0,
+      x: "-100%", // Glisse vers la gauche
+      duration: 0.4,
+      ease: "power3.in",
+      onComplete: () => {
+        this.isVisible = false;
+        this.closeModalEvent.emit(); // Notifie le parent
+      }
+    });
   }
-
+  
 }
