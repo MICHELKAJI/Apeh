@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { ServiceArticleService } from '../service-article.service';
-import { DatePipe, NgFor, NgIf } from '@angular/common';
+import { CommonModule, DatePipe, NgFor, NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-dash-activity',
   standalone: true,
-  imports: [ NgFor, NgIf, DatePipe],
+  imports: [ NgFor, NgIf, DatePipe, CommonModule],
   templateUrl: './dash-activity.component.html',
   styleUrl: './dash-activity.component.css'
 })

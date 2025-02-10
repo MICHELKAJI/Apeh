@@ -1,8 +1,8 @@
 <div 
   *ngIf="isVisible" 
-  class="fixed w-full inset-0 flex justify-center items-center bg-gray-800/80 backdrop-blur-md z-[1000] overflow-hidden">
+  class="fixed w-full inset-0 flex justify-center items-center bg-gray-800/80 backdrop-blur-md z-50 overflow-hidden">
   
-  <div class="relative bg-white w-full h-full md:h-auto max-w-5xl rounded-lg shadow-xl p-8 overflow-auto z-[1010]">
+  <div class="relative bg-white w-full h-full md:h-auto max-w-5xl rounded-lg shadow-xl p-8 overflow-auto z-50 ">
     <!-- Bouton de fermeture -->
     <button
       type="button"
@@ -22,7 +22,7 @@
     <div class="flex flex-col md:flex-row gap-8">
       <!-- Image -->
       <div class="w-full md:w-1/2 flex justify-center">
-        <img [src]="Actuality.image" alt="{{ Actuality?.title }}" class="rounded-lg shadow-lg w-full h-auto object-cover">
+        <img [src]="Actuality.image" alt="{{ Actuality?.title }}" class="rounded-lg shadow-lg w-full h-96 object-cover">
       </div>
 
       <!-- Texte -->
@@ -44,10 +44,10 @@
             Faites un geste aujourd'hui pour soutenir notre mission.
           </p>
           <div class="flex justify-center gap-4">
-            <button class="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-lg shadow-lg text-lg transition duration-300">
+            <button class="bg-orange-500 hover:bg-orange-600 text-white px-2 py-2 rounded-lg shadow-lg text-lg transition duration-300">
               Faire un don
             </button>
-            <button class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-lg shadow-lg text-lg transition duration-300">
+            <button class="bg-blue-500 hover:bg-blue-600 text-white px-2 py-2 rounded-lg shadow-lg text-lg transition duration-300">
               Nous contacter
             </button>
           </div>

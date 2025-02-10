@@ -1,13 +1,13 @@
 <main class="flex flex-col justify-center items-center gap-10  bg-[url('/images/bg.jpg')] h-screen w-full bg-cover bg-center text-white font-medium lg:p-8 p-5">
     <h2 class="lg:text-5xl text-5xl lg:mx-56 lg:text-start text-center lg:w-[60rem]">Agissez <br/> maintenant <br/> pour changer des vies</h2>
-    <div class="flex flex-row lg:gap-5 gap-3 justify-start lg:w-[60rem]"><button [routerLink]="['/']" fragment="cause" class="relative p-2 w-52 lg:w-60 overflow-hidden rounded-xl bg-orange-400 text-white group">
+    <div #box class="flex flex-row lg:gap-5 gap-3 justify-start lg:w-[60rem]"><button [routerLink]="['/']" fragment="cause" class="relative p-2 w-52 lg:w-60 overflow-hidden rounded-xl bg-orange-400 text-white group">
         <span class="absolute inset-0 bg-sky-500 translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-300 ease-out"></span>
-        <span class="relative z-10">Nos Causes</span>
+        <span class="relative">Nos Causes</span>
       </button>
       
       <button class="relative p-2 w-36 lg:w-60 overflow-hidden rounded-2xl border border-white text-white group">
         <span class="absolute inset-0 bg-sky-500 translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-300 ease-out"></span>
-        <span class="relative z-10">Faire un Don</span>
+        <span class="relative">Faire un Don</span>
       </button>
       </div>
 

@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
+import gsap from 'gsap';
+
 
 @Component({
   selector: 'app-banner',
@@ -9,6 +11,7 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
   styleUrl: './banner.component.css'
 })
 export class BannerComponent implements OnInit {
+  @ViewChild('box') box!:ElementRef
 
     constructor(private route: ActivatedRoute){}
 
@@ -22,6 +25,9 @@ export class BannerComponent implements OnInit {
         }
       })
       
+    }
+    ngAfterViewInit() {
+      gsap.from(this.box.nativeElement, { opacity: 0, y: 50, duration: 1 });
     }
 
 }
