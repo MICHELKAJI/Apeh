@@ -1,5 +1,5 @@
 <div class="fixed w-full inset-0 flex justify-center items-center bg-gray-800/80 backdrop-blur-md z-50 overflow-hidden" [ngClass]="{'hidden': !isVisible}">
-    <div class="w-full h-full max-w-4xl bg-white shadow-lg overflow-auto flex flex-col justify-between">
+    <div #modal class="w-full h-full max-w-4xl bg-white shadow-lg overflow-auto flex flex-col justify-between">
       <!-- Header -->
       <div class="p-6 border-b border-gray-200 flex justify-between items-center">
         <h2 class="text-xl md:text-2xl font-bold text-blue-900">{{ article?.title }}</h2>

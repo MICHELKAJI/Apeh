@@ -1,16 +1,16 @@
 import { Component, ViewChild } from '@angular/core';
 import { FooterComponent } from '../footer/footer.component';
-import { CarouselComponent } from '../carousel/carousel.component';
 import { ServiceArticleService } from '../service-article.service';
 import { DatePipe, NgFor } from '@angular/common';
 import { ModalArticleDetailsComponent } from '../modal-article-details/modal-article-details.component';
 import { SectionPostServiceService } from '../section-post-service.service';
 import { CommonModule } from '@angular/common';
+import { SmallCarouselComponent } from '../small-carousel/small-carousel.component';
 
 @Component({
   selector: 'app-langing-actuality',
   standalone: true,
-  imports: [CommonModule, FooterComponent, CarouselComponent, DatePipe, NgFor, ModalArticleDetailsComponent],
+  imports: [CommonModule, FooterComponent, SmallCarouselComponent, DatePipe, NgFor, ModalArticleDetailsComponent],
   templateUrl: './langing-actuality.component.html',
   styleUrl: './langing-actuality.component.css',
 })
