@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { Data, PostServiceService } from '../post-service.service';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { NgFor, NgIf } from '@angular/common';
+import { formatDate, NgFor, NgIf } from '@angular/common';
 import { PostSection, SectionPostServiceService } from '../section-post-service.service';
 
 @Component({
@@ -14,18 +14,20 @@ import { PostSection, SectionPostServiceService } from '../section-post-service.
 export class ModalePostSectionComponent {
   actualityForm: FormGroup;
   imagePreview: string | null = null;
-  base64Image: string = '';
+  selectedFile: File | null = null;
+
 
   @Output() closeModalEvent = new EventEmitter<void>();
   isVisible = false;
   posts: Data[] = [];
+  isSubmitting = false;
 
   constructor(private formBuilder: FormBuilder, private postService: PostServiceService,  private postServiceSection: SectionPostServiceService) {
     this.actualityForm = this.formBuilder.group({
       title: ['', Validators.required],
       content: ['', Validators.required],
       postId: ['', Validators.required],
-      image: ['', Validators.required],
+      image: [null, Validators.required],
     });
   }
 
@@ -43,75 +45,70 @@ export class ModalePostSectionComponent {
     this.closeModalEvent.emit();
   }
 
-  resizeImage(file: File, maxWidth: number, maxHeight: number): Promise<string> {
-    return new Promise((resolve, reject) => {
-      const img = new Image();
-      const reader = new FileReader();
   
-      reader.onload = (e: any) => {
-        img.src = e.target.result;
-      };
-  
-      reader.onerror = reject;
-  
-      img.onload = () => {
-        const canvas = document.createElement('canvas');
-        const ctx = canvas.getContext('2d')!;
-        let { width, height } = img;
-  
-        // Redimensionnement
-        if (width > maxWidth || height > maxHeight) {
-          if (width > height) {
-            height = Math.floor((height * maxWidth) / width);
-            width = maxWidth;
-          } else {
-            width = Math.floor((width * maxHeight) / height);
-            height = maxHeight;
-          }
-        }
-  
-        canvas.width = width;
-        canvas.height = height;
-  
-        ctx.drawImage(img, 0, 0, width, height);
-  
-        // Compression et conversion en Base64
-        const dataUrl = canvas.toDataURL('image/jpeg', 0.7); // Compression à 70%
-        resolve(dataUrl);
-      };
-  
-      reader.readAsDataURL(file);
-    });
-  }
-  onImageChange(event: any): void {
-    const file = event.target.files[0];
-    if (file) {
-      const maxWidth = 800; // Limite de largeur en pixels
-      const maxHeight = 800; // Limite de hauteur en pixels
-  
-      this.resizeImage(file, maxWidth, maxHeight)
-        .then((compressedBase64) => {
-          this.imagePreview = compressedBase64;
-          this.actualityForm.patchValue({ image: compressedBase64 });
-        })
-        .catch((error) => {
-          console.error('Erreur lors de la compression de l\'image', error);
-        });
+  onFileSelected(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    if (input?.files?.length) {
+      const file = input.files[0];
+      if (!file.type.startsWith('image/')) {
+        alert('Le fichier sélectionné doit être une image.');
+        this.selectedFile = null;
+        this.imagePreview = null;
+        return;
+      }
+      if (file.size > 5 * 1024 * 1024) { // Limite de taille (5MB)
+        alert('L\'image ne doit pas dépasser 5 Mo.');
+        this.selectedFile = null;
+        this.imagePreview = null;
+        return;
+      }
+
+      this.selectedFile = file;
+      this.imagePreview = URL.createObjectURL(file); // Prévisualisation
+      this.actualityForm.patchValue({ image: file }); // Met à jour la valeur du champ image
     }
   }
   
 
-  onSubmit(): void {
-    if (this.actualityForm.valid) {
-      const postSection: PostSection = this.actualityForm.value;
-      this.postServiceSection.postDatas(postSection).subscribe({
-        next: (response) => {
-          console.log('Actualité créée avec succès', response);
-        },
-        error: (error) => {
-          console.error('Erreur lors de la création', error);
-        }
-      });
+
+  submitPost() {
+    this.isSubmitting = true; // Indiquer que la soumission est en cours
+    console.log('Form valid:', this.actualityForm.valid); // Log de la validité du formulaire
+    console.log('Selected file:', this.selectedFile); // Log du fichier sélectionné
+
+    if (this.actualityForm.invalid || !this.selectedFile) {
+      alert('Veuillez remplir tous les champs et sélectionner une image.');
+      this.isSubmitting = false; // Réinitialiser l'état de soumission
+      return;
     }
+
+    const formData = new FormData();
+    formData.append('postId', this.actualityForm.value.postId);
+    formData.append('title', this.actualityForm.value.title);
+    formData.append('content', this.actualityForm.value.content);
+    formData.append('image', this.selectedFile as File);
+    
+    // Ajout d'un log pour voir les données envoyées
+    console.log('Données envoyées au serveur:', {
+      title: this.actualityForm.value.title,
+      content: this.actualityForm.value.content,
+      postId: this.actualityForm.value.postId,
+      image: this.selectedFile?.name // Affiche le nom du fichier
+    });
+
+    this.postServiceSection.postDatas(formData).subscribe({
+      next: (response) => {
+        alert('Actualité créée avec succès !');
+        this.actualityForm.reset();
+        this.closeModal();
+      },
+      error: (error) => {
+        alert('Erreur lors de la création de l\'actualité.');
+        console.error(error);
+      },
+      complete: () => {
+        this.isSubmitting = false; // Réinitialiser l'état de soumission après la réponse
+      }
+    });
   }
 }

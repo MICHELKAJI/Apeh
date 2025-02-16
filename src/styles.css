@@ -10,3 +10,7 @@
         padding: 0 0;
     }
 }
+.menu-button {
+  @apply w-12 h-12 text-white rounded-full flex items-center justify-center shadow-lg opacity-0 absolute;
+}
+

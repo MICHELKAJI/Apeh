@@ -6,7 +6,7 @@ export interface PostSection {
   title: string;
   content: string;
   postId: number;
-  image?: string; // Optionnel si non obligatoire
+  image?: File; // Optionnel si non obligatoire
 }
 
 @Injectable({
@@ -19,7 +19,7 @@ export class SectionPostServiceService {
   constructor(private httpClient: HttpClient) { }
 
   // Méthode POST pour envoyer les données
-  postDatas(postSection: PostSection ): Observable<PostSection> {
+  postDatas(postSection: FormData ): Observable<PostSection> {
     return this.httpClient.post<PostSection>(this.apiUrl, postSection );
   };
   getDatas(): Observable<PostSection[]>{

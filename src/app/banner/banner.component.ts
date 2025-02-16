@@ -1,12 +1,13 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import gsap from 'gsap';
+import { BoutonFlotingComponent } from '../bouton-floting/bouton-floting.component';
 
 
 @Component({
   selector: 'app-banner',
   standalone: true,
-  imports: [ RouterLink],
+  imports: [ RouterLink, BoutonFlotingComponent],
   templateUrl: './banner.component.html',
   styleUrl: './banner.component.css'
 })

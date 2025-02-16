@@ -1,8 +1,8 @@
 import { Component, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Actuality, ActualityService } from '../actuality-service.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgClass, NgIf } from '@angular/common';
+import { ActualityService } from '../actuality-service.service';
 
 @Component({
   selector: 'app-modal-actuality',
@@ -13,7 +13,7 @@ import { NgClass, NgIf } from '@angular/common';
 })
 export class ModalActualityComponent {
   actualityForm: FormGroup;
-  base64Image: string = '';
+  selectedFile: File | null = null;
   imagePreview: string | null = null;
 
   @Output() closeModalEvent = new EventEmitter<void>();
@@ -24,7 +24,7 @@ export class ModalActualityComponent {
     this.actualityForm = this.formBuilder.group({
       title: ['', Validators.required],
       content: ['', Validators.required],
-      image: ['', Validators.required],
+      image: [null, Validators.required],
     });
   }
 
@@ -40,30 +40,67 @@ export class ModalActualityComponent {
   }
 
   // Gestion de la sélection de fichier
-  onImageChange(event: any): void {
-    const file = event.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = (e: any) => {
-        this.imagePreview = e.target.result;
-        this.actualityForm.patchValue({ image: this.imagePreview });
-      };
-      reader.readAsDataURL(file);
+  onFileSelected(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    if (input?.files?.length) {
+      const file = input.files[0];
+      if (!file.type.startsWith('image/')) {
+        alert('Le fichier sélectionné doit être une image.');
+        this.selectedFile = null;
+        this.imagePreview = null;
+        return;
+      }
+      if (file.size > 5 * 1024 * 1024) { // Limite de taille (5MB)
+        alert('L\'image ne doit pas dépasser 5 Mo.');
+        this.selectedFile = null;
+        this.imagePreview = null;
+        return;
+      }
+
+      this.selectedFile = file;
+      this.imagePreview = URL.createObjectURL(file); // Prévisualisation
+      this.actualityForm.patchValue({ image: file }); // Met à jour la valeur du champ image
     }
   }
-
+  
+  
   // Soumettre le formulaire
-  onSubmit(): void {
-    if (this.actualityForm.valid) {
-      const actuality: Actuality = this.actualityForm.value;
-      this.actualityService.postDatas(actuality).subscribe({
-        next: (response) => {
-          console.log('Actualité créée avec succès', response);
-        },
-        error: (error) => {
-          console.error('Erreur lors de la création', error);
-        }
-      });
+  submitPost() {
+    this.isSubmitting = true; // Indiquer que la soumission est en cours
+    console.log('Form valid:', this.actualityForm.valid); // Log de la validité du formulaire
+    console.log('Selected file:', this.selectedFile); // Log du fichier sélectionné
+
+    if (this.actualityForm.invalid || !this.selectedFile) {
+      alert('Veuillez remplir tous les champs et sélectionner une image.');
+      this.isSubmitting = false; // Réinitialiser l'état de soumission
+      return;
     }
+
+    const formData = new FormData();
+    formData.append('title', this.actualityForm.value.title);
+    formData.append('content', this.actualityForm.value.content);
+    formData.append('image', this.selectedFile as File);
+    
+    // Ajout d'un log pour voir les données envoyées
+    console.log('Données envoyées au serveur:', {
+      title: this.actualityForm.value.title,
+      content: this.actualityForm.value.content,
+      image: this.selectedFile?.name // Affiche le nom du fichier
+    });
+
+    this.actualityService.postDatas(formData).subscribe({
+      next: (response) => {
+        alert('Actualité créée avec succès !');
+        this.actualityForm.reset();
+        this.closeModal();
+      },
+      error: (error) => {
+        alert('Erreur lors de la création de l\'actualité.');
+        console.error(error);
+      },
+      complete: () => {
+        this.isSubmitting = false; // Réinitialiser l'état de soumission après la réponse
+      }
+    });
   }
 }

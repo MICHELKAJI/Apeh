@@ -1,7 +1,7 @@
 <!-- modal-actuality.component.html -->
 <div class="fixed inset-0 transform transition-all duration-300 ease-in-out flex justify-center items-center bg-slate-900/80 backdrop-blur-sm z-50 overflow-auto p-4 sm:p-6 md:p-8" 
      [ngClass]="{'hidden': !isVisible}">
-  
+
   <div class="w-full max-w-xl mx-auto bg-white rounded-2xl shadow-2xl transform transition-all duration-300 ease-out scale-100">
     <!-- En-tête du modal avec bouton fermer -->
     <div class="p-6 border-b border-slate-100 relative">
@@ -17,33 +17,29 @@
       <p class="text-sm text-slate-500 mt-1">Remplissez les informations ci-dessous pour créer une nouvelle actualité.</p>
     </div>
 
-    <form [formGroup]="actualityForm" (ngSubmit)="onSubmit()" class="p-6 space-y-6">
+    <form [formGroup]="actualityForm" (ngSubmit)="submitPost()" class="p-6 space-y-6">
       <!-- Titre -->
       <div class="space-y-2">
         <label for="title" class="block text-sm font-semibold text-slate-700">Titre</label>
-        <div class="relative">
-          <input 
-            id="title" 
-            formControlName="title" 
-            type="text" 
-            class="w-full px-4 py-3 rounded-lg border border-slate-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-200 bg-white text-slate-800 placeholder-slate-400"
-            placeholder="Entrez le titre de l'actualité"
-          />
-        </div>
+        <input 
+          id="title" 
+          formControlName="title" 
+          type="text" 
+          class="w-full px-4 py-3 rounded-lg border border-slate-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-200 bg-white text-slate-800 placeholder-slate-400"
+          placeholder="Entrez le titre de l'actualité"
+        />
       </div>
     
       <!-- Contenu -->
       <div class="space-y-2">
         <label for="content" class="block text-sm font-semibold text-slate-700">Contenu</label>
-        <div class="relative">
-          <textarea 
-            id="content" 
-            formControlName="content" 
-            rows="4"
-            class="w-full px-4 py-3 rounded-lg border border-slate-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-200 bg-white text-slate-800 placeholder-slate-400 resize-none"
-            placeholder="Décrivez votre actualité..."
-          ></textarea>
-        </div>
+        <textarea 
+          id="content" 
+          formControlName="content" 
+          rows="4"
+          class="w-full px-4 py-3 rounded-lg border border-slate-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-200 bg-white text-slate-800 placeholder-slate-400 resize-none"
+          placeholder="Décrivez votre actualité..."
+        ></textarea>
       </div>
     
       <!-- Upload d'image -->
@@ -63,7 +59,7 @@
                 </svg>
                 <p class="pt-1 text-sm tracking-wider text-slate-400 group-hover:text-slate-600">Sélectionnez une image</p>
               </div>
-              <input type="file" (change)="onImageChange($event)" class="opacity-0 absolute inset-0 cursor-pointer">
+              <input type="file" (change)="onFileSelected($event)" class="opacity-0 absolute inset-0 cursor-pointer">
             </label>
           </div>
         </div>
@@ -79,9 +75,9 @@
         </button>
         <button 
           type="submit" 
-          [disabled]="actualityForm.invalid" 
+          [disabled]="actualityForm.invalid || isSubmitting" 
           class="px-6 py-2.5 rounded-lg bg-blue-600 text-white font-medium hover:bg-blue-700 active:bg-blue-800 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-          Publier l'actualité
+          {{ isSubmitting ? 'Publication...' : 'Publier l\'actualité' }}
         </button>
       </div>
     </form>

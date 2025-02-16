@@ -2,11 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
-export interface Actuality {
-  title: string;
-  content: string;
-  image: string;
-}
 
 
 @Injectable({
@@ -18,8 +13,8 @@ export class ActualityService {
   constructor(private httpClient: HttpClient) {}
 
   // Méthode pour envoyer les données directement en JSON
-  postDatas(actuality: Actuality): Observable<any> {
-    return this.httpClient.post(this.apiUrl, actuality);
+  postDatas(activity: FormData): Observable<any> {
+    return this.httpClient.post(this.apiUrl, activity);
   }
 
   // Méthode GET pour récupérer les données
