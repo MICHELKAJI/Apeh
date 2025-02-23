@@ -12,7 +12,7 @@ export interface Data {
   providedIn: 'root'
 })
 export class ServiceArticleService {
-  private urlapi = "http://localhost:3000/post"
+  private urlapi = "backendaped-production.up.railway.app/post"
 
   constructor( private httpClient: HttpClient) { }
 

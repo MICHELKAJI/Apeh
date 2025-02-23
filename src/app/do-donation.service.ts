@@ -13,7 +13,7 @@ export interface Data {
   providedIn: 'root'
 })
 export class DoDonationService {
-  private urlapi = "http://localhost:3000/donation"
+  private urlapi = "backendaped-production.up.railway.app/donation"
 
   constructor( private httpClient: HttpClient) { }
 

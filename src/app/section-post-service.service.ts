@@ -14,7 +14,7 @@ export interface PostSection {
 })
 export class SectionPostServiceService {
 
-  private apiUrl = 'http://localhost:3000/postsection'; 
+  private apiUrl = 'backendaped-production.up.railway.app/postsection'; 
 
   constructor(private httpClient: HttpClient) { }
 

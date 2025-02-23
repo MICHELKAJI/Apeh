@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class ActualityService {
-  private apiUrl = 'http://localhost:3000/actuality';
+  private apiUrl = 'backendaped-production.up.railway.app/actuality';
 
   constructor(private httpClient: HttpClient) {}
 
