@@ -7,11 +7,12 @@ import { MakeActionComponent } from '../make-action/make-action.component';
 import { NewsComponent } from '../news/news.component';
 import { FooterComponent } from '../footer/footer.component';
 import { SmallCarouselComponent } from "../small-carousel/small-carousel.component";
+import { CarouselComponent } from '../carousel/carousel.component';
 
 @Component({
   selector: 'app-landing-page',
   standalone: true,
-  imports: [BannerComponent, CallToActionComponent, AboutComponent, SectionEventComponent, MakeActionComponent, NewsComponent, FooterComponent, SmallCarouselComponent],
+  imports: [BannerComponent, CallToActionComponent, AboutComponent, SectionEventComponent, MakeActionComponent, NewsComponent, FooterComponent, CarouselComponent],
   templateUrl: './landing-page.component.html',
   styleUrl: './landing-page.component.css'
 })
