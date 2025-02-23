@@ -11,7 +11,7 @@ export interface Data {
   providedIn: 'root'
 })
 export class ServiceNewslatterService {
-  private apiUrl = 'backendaped-production.up.railway.app/news'; 
+  private apiUrl ="backendaped-production.up.railway.app/news"; 
 
   constructor(private httpClient: HttpClient) { }
 

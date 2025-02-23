@@ -16,7 +16,7 @@ export interface Data {
 export class PostServiceService {
 
   
-  private apiUrl = 'backendaped-production.up.railway.app/post'; 
+  private apiUrl ='backendaped-production.up.railway.app/post'; 
 
   constructor(private httpClient: HttpClient) { }
 
