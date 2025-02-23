@@ -13,7 +13,7 @@ export interface Data {
   providedIn: 'root'
 })
 export class DoDonationService {
-  private urlapi ="backendaped-production.up.railway.app/donation"
+  private urlapi ="https://backendaped-production.up.railway.app/donation"
 
   constructor( private httpClient: HttpClient) { }
 
