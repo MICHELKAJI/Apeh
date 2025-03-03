@@ -1,8 +1,8 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { Data, PostServiceService } from '../post-service.service';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { formatDate, NgFor, NgIf } from '@angular/common';
-import { PostSection, SectionPostServiceService } from '../section-post-service.service';
+import { NgFor, NgIf } from '@angular/common';
+import { SectionPostServiceService } from '../section-post-service.service';
 
 @Component({
   selector: 'app-modale-post-section',
