@@ -20,14 +20,14 @@ export class CarouselPhotoComponent implements OnInit, OnDestroy {
     { post: "/images/ideechamps8.jpeg"},
     { post: "/images/ideechamps9.jpeg"},
     { post: "/images/ideechamps10.jpeg"},
-    { post: "/images/ideechamps11jpeg"},
-    { post: "/images/ideechamps12jpeg"},
-    { post: "/images/ideechamps13jpeg"},
-    { post: "/images/ideechamps14jpeg"},
-    { post: "/images/ideechamps15jpeg"},
-    { post: "/images/ideechamps16jpeg"},
-    { post: "/images/ideechamps17jpeg"},
-    { post: "/images/ideechamps18jpeg"},
+    { post: "/images/ideechamps11.jpeg"},
+    { post: "/images/ideechamps12.jpeg"},
+    { post: "/images/ideechamps13.jpeg"},
+    { post: "/images/ideechamps14.jpeg"},
+    { post: "/images/ideechamps15.jpeg"},
+    { post: "/images/ideechamps16.jpeg"},
+    { post: "/images/ideechamps17.jpeg"},
+    { post: "/images/ideechamps18.jpeg"},
   ];
   currentIndex: number = 0;
   intervalId: any;
