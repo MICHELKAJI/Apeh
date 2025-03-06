@@ -10,12 +10,6 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 })
 export class CarouselPhotoComponent implements OnInit, OnDestroy {
   images = [
-    { post: "/images/idee.jpg"},
-    { post: "/images/etienne.jpg"},
-    { post: "/images/jennifer.jpg"},
-    { post: "/images/jennifer.jpg"},
-    { post: "/images/bg.jpg"},
-    { post: "/images/kid.jpg"},
     { post: "/images/ideechamps1.jpeg"},
     { post: "/images/ideechamps2.jpeg"},
     { post: "/images/ideechamps3.jpeg"},
