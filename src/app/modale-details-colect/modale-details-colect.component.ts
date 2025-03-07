@@ -47,4 +47,11 @@ export class ModaleDetailsColectComponent {
     );
   }
 
+  isDonationDisabled(): boolean {
+    if (!this.Actuality?.date) return true; // Désactive si la date est absente
+    const postDate = new Date(this.Actuality.date);
+    const today = new Date();
+    return today < postDate; // Désactive le bouton si aujourd'hui est avant la date du post
+  }
+
 }
