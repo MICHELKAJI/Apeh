@@ -26,7 +26,6 @@ export class CarouselPhotoComponent implements OnInit, OnDestroy {
     { post: "/images/ideechamps14.jpeg"},
     { post: "/images/ideechamps15.jpeg"},
     { post: "/images/ideechamps16.jpeg"},
-    { post: "/images/ideechamps17.jpeg"},
     { post: "/images/ideechamps18.jpeg"},
   ];
   currentIndex: number = 0;

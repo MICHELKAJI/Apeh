@@ -1,8 +1,8 @@
 <header class="">
 <div class=" hidden md:block">
-    <div [ngClass]="isScrolled? 'flex bg-slate-200 shadow-2xl top-0 transition duration-300 flex-row w-[60rem] gap-5 fixed inset-0 mx-auto font-bold h-[6rem]  items-center z-20 ' : 'flex top-5  flex-row w-[60rem] gap-5 fixed inset-0 mx-auto font-bold h-[6rem]  items-center  bg-white z-20 ' " class=" ">
+    <div [ngClass]="isScrolled? 'flex bg-slate-200 shadow-2xl px-5  top-0 transition duration-300 flex-row justify-center w-full gap-5 fixed inset-0 mx-auto font-bold h-[6rem]  items-center z-20 ' : 'flex top-5  flex-row w-[60rem] gap-5 fixed inset-0 mx-auto font-bold h-[6rem]  items-center  bg-white z-20 ' ">
         <div class="">
-            <img class="h-14 w-20 rounded-full " src="images/logo.jpg" alt="logo">
+            <img class="h-14 w-14 rounded-full " src="images/logo.jpg" alt="logo">
         </div>
         <div class=" flex flex-col">
             <div class=" bg-slate-200">
@@ -13,7 +13,7 @@
                 </div>
             </div>
             <div class="bg-white flex flex-row">
-                <nav class="flex flex-row bg-slate-100 w-[55rem] justify-between">
+                <nav [ngClass]="isScrolled? 'flex flex-row bg-slate-100 w-full justify-between':'flex flex-row bg-slate-100 w-[55rem] justify-between'">
                     <ul class=" flex flex-row gap-3 text-[#4a494977]">
                         <li routerLink ="" routerLinkActive="font-bold bg-white border-t-4 border-t-red-500" [routerLinkActiveOptions]="{ exact: true }" class="hover:bg-white hover:font-bold transition duration-300 w-32 p-5 text-center text-xs cursor-pointer ">Accueil</li>
                         <li routerLink="about" routerLinkActive="font-bold bg-white border-t-4 border-t-red-500" class="hover:bg-white hover:font-bold transition duration-300 w-32 p-5 text-center text-xs cursor-pointer">A propos</li>
