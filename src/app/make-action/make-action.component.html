@@ -1,20 +1,58 @@
 <main id="volontaire" class="bg-slate-900 w-full p-20 flex lg:flex-row flex-col gap-5 justify-center items-center">
-    <h2 class="text-2xl  font-bold lg:w-28 text-white">Devenir Volontaire</h2>
+    <h2 class="text-2xl font-bold lg:w-28 text-white">Devenir Volontaire</h2>
+  
     <form (ngSubmit)="submitNewDonation()" class="flex flex-col gap-4 text-white">
-        <div class=" flex lg:flex-row flex-col gap-3">
-            <div class="flex rounded-lg flex-row items-center bg-slate-600 pl-3">
-                <div><img class="h-4 w-4" src="images/CustomerOne.png" alt="">
-                </div><input class=" lg:p-3 p-5 rounded-lg bg-slate-600 outline-none text-white lg:w-64 w-[20rem] " placeholder="Nom"  type="text" id="nom" name="nom" [(ngModel)]="nom" required></div>
-
-                <div class="flex rounded-lg flex-row items-center bg-slate-600 pl-3">
-                    <div><img class="h-4 w-4" src="images/PhoneOne.png" alt=""></div><input placeholder="Télephpne" required class=" lg:p-3 p-5 rounded-lg  bg-slate-600 outline-none text-white w-64" type="tel" name="tel" id="tel" [(ngModel)]="tel"></div> </div>
-        <div class=" flex lg:flex-row flex-col gap-4"><div class="flex rounded-lg flex-row items-center bg-slate-600 pl-3"><div><img class="h-4 w-4" src="images/EmailOne.png" alt=""></div><input placeholder="Email" class=" lg:p-3 p-5 rounded-lg  bg-slate-600 outline-none text-white" id="email" [(ngModel)]="mail" name="email" required></div><div class="flex rounded flex-row items-center bg-slate-600 pl-3"><div><img class="h-4 w-4" src="images/LocationOne.png" alt=""></div><input placeholder="Ville" [(ngModel)]="ville" class="lg:p-3 p-5 rounded-lg  bg-slate-600 outline-none text-white" type="text" name="ville" required id="ville"></div> <button class="bg-orange-400 rounded-lg  text-white font-bold text-sm p-3 shadow-lg hover:bg-blue-400 transition duration-300">Donateur</button> </div>
-        <div class="text-red-600">
-           <p [ngClass]="{
-             'text-green-600 bg-green-100 p-2 mt-4 rounded': messageType === 'succès',
-              'text-red-600 bg-red-100 p-2 mt-4 rounded': messageType === 'error',
-              }">{{ message }}
-           </p>
+      <div class="flex lg:flex-row flex-col gap-3">
+        <!-- Nom -->
+        <div class="flex rounded-lg flex-row items-center bg-slate-600 pl-3">
+          <div>
+            <img class="h-4 w-4" src="images/CustomerOne.png" alt="">
+          </div>
+          <input class="lg:p-3 p-5 rounded-lg bg-slate-600 outline-none text-white lg:w-64 w-[20rem]" placeholder="Nom" type="text" id="nom" name="nom" [(ngModel)]="nom" required>
         </div>
+  
+        <!-- Téléphone -->
+        <div class="flex rounded-lg flex-row items-center bg-slate-600 pl-3">
+          <div>
+            <img class="h-4 w-4" src="images/PhoneOne.png" alt="">
+          </div>
+          <input placeholder="Téléphone" required class="lg:p-3 p-5 rounded-lg bg-slate-600 outline-none text-white w-64" type="tel" name="tel" id="tel" [(ngModel)]="tel">
+        </div>
+      </div>
+  
+      <div class="flex lg:flex-row flex-col gap-4">
+        <!-- Email -->
+        <div class="flex rounded-lg flex-row items-center bg-slate-600 pl-3">
+          <div>
+            <img class="h-4 w-4" src="images/EmailOne.png" alt="">
+          </div>
+          <input placeholder="Email" class="lg:p-3 p-5 rounded-lg bg-slate-600 outline-none text-white" id="email" [(ngModel)]="mail" name="email" required>
+        </div>
+  
+        <!-- Ville -->
+        <div class="flex rounded flex-row items-center bg-slate-600 pl-3">
+          <div>
+            <img class="h-4 w-4" src="images/LocationOne.png" alt="">
+          </div>
+          <input placeholder="Ville" [(ngModel)]="ville" class="lg:p-3 p-5 rounded-lg bg-slate-600 outline-none text-white" type="text" name="ville" required id="ville">
+        </div>
+  
+        <!-- Bouton avec Loader -->
+        <button [disabled]="isLoading" type="submit" class="bg-orange-400 flex items-center justify-center gap-2 rounded-lg text-white font-bold text-sm p-3 shadow-lg hover:bg-blue-400 transition duration-300 disabled:opacity-50 disabled:cursor-not-allowed">
+          <span *ngIf="!isLoading">Donateur</span>
+          <div *ngIf="isLoading" class="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+        </button>
+      </div>
+  
+      <!-- Message de feedback -->
+      <div class="text-red-600">
+        <p [ngClass]="{
+            'text-green-600 bg-green-100 p-2 mt-4 rounded': messageType === 'succès',
+            'text-red-600 bg-red-100 p-2 mt-4 rounded': messageType === 'error'
+          }">
+          {{ message }}
+        </p>
+      </div>
     </form>
-</main>
+  </main>
+  
