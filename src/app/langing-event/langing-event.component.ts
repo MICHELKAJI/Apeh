@@ -1,6 +1,5 @@
-import { parseTemplate } from '@angular/compiler';
+
 import { Component, ElementRef, QueryList, ViewChildren } from '@angular/core';
-import { PageCausesComponent } from '../page-causes/page-causes.component';
 import { FooterComponent } from '../footer/footer.component';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -10,7 +9,7 @@ gsap.registerPlugin(ScrollTrigger);
 @Component({
   selector: 'app-langing-event',
   standalone: true,
-  imports: [ PageCausesComponent, FooterComponent],
+  imports: [ FooterComponent],
   templateUrl: './langing-event.component.html',
   styleUrl: './langing-event.component.css'
 })
